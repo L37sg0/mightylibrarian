@@ -1,2 +1,3 @@
-/vendor/
 .idea
+mightylibrarian/.env
+mightylibrarian/vendor

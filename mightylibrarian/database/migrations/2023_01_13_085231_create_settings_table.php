@@ -1,9 +1,11 @@
 <?php
 
+use App\Models\Globals;
+use App\Models\Setting\ReturnDays;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use App\Models\User as Model;
+use App\Models\Setting\Setting as Model;
 
 return new class extends Migration
 {
@@ -16,11 +18,8 @@ return new class extends Migration
     {
         Schema::create(Model::TABLE_NAME, function (Blueprint $table) {
             $table->id();
-            $table->string(Model::FIELD_NAME);
-            $table->string(Model::FIELD_EMAIL)->unique();
-            $table->timestamp(Model::FIELD_EMAIL_VERIFIED_AT)->nullable();
-            $table->string(Model::FIELD_PASSWORD);
-            $table->rememberToken();
+            $table->smallInteger(Model::FIELD_RETURN_DAYS);
+            $table->string(Model::FIELD_FINE);
             $table->timestamps();
         });
     }

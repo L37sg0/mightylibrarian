@@ -1,9 +1,11 @@
 <?php
 
+use App\Models\Globals;
+use App\Models\Student\Gender;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use App\Models\User as Model;
+use App\Models\Student\Student as Model;
 
 return new class extends Migration
 {
@@ -17,10 +19,12 @@ return new class extends Migration
         Schema::create(Model::TABLE_NAME, function (Blueprint $table) {
             $table->id();
             $table->string(Model::FIELD_NAME);
-            $table->string(Model::FIELD_EMAIL)->unique();
-            $table->timestamp(Model::FIELD_EMAIL_VERIFIED_AT)->nullable();
-            $table->string(Model::FIELD_PASSWORD);
-            $table->rememberToken();
+            $table->timestamp(Model::FIELD_DATE_OF_BIRTH);
+            $table->string(Model::FIELD_GENDER);
+            $table->string(Model::FIELD_EMAIL);
+            $table->string(Model::FIELD_PHONE);
+            $table->json(Model::FIELD_ADDRESS);
+            $table->string(Model::FIELD_CLASS);
             $table->timestamps();
         });
     }

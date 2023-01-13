@@ -18,10 +18,7 @@ return new class extends Migration
     {
         Schema::create(Model::TABLE_NAME, function (Blueprint $table) {
             $table->id();
-            $table->enum(
-                Model::FIELD_RETURN_DAYS,
-                array_column(ReturnDays::cases(), Globals::ENUM_FIELD_VALUE)
-            );
+            $table->smallInteger(Model::FIELD_RETURN_DAYS);
             $table->string(Model::FIELD_FINE);
             $table->timestamps();
         });

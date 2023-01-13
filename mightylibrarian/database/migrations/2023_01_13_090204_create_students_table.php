@@ -20,10 +20,7 @@ return new class extends Migration
             $table->id();
             $table->string(Model::FIELD_NAME);
             $table->timestamp(Model::FIELD_DATE_OF_BIRTH);
-            $table->enum(
-                Model::FIELD_GENDER,
-                array_column(Gender::cases(), Globals::ENUM_FIELD_VALUE)
-            );
+            $table->string(Model::FIELD_GENDER);
             $table->string(Model::FIELD_EMAIL);
             $table->string(Model::FIELD_PHONE);
             $table->json(Model::FIELD_ADDRESS);

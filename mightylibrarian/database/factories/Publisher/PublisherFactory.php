@@ -15,7 +15,7 @@ class PublisherFactory extends Factory
     public function definition()
     {
         return [
-            Publisher::FIELD_NAME => $this->faker->name
+            Publisher::FIELD_NAME => $this->faker->company
         ];
     }
 }

@@ -32,7 +32,7 @@ interface StudentFields
     public const CASTS = [
         self::FIELD_DATE_OF_BIRTH   => Globals::CAST_FORMAT_DATETIME_YMD,
         self::FIELD_GENDER          => Gender::class,
-        self::FIELD_ADDRESS         => Address::class
+        self::FIELD_ADDRESS         => Globals::CAST_FORMAT_ARRAY
     ];
 
 }

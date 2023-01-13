@@ -27,10 +27,7 @@ return new class extends Migration
                 ->onDelete(Globals::ON_DELETE_CASCADE);
             $table->foreignId(Model::FIELD_PUBLISHER_ID)->nullable()->constrained(Publisher::TABLE_NAME)
                 ->onDelete(Globals::ON_DELETE_CASCADE);
-            $table->enum(
-                Model::FIELD_STATUS,
-                array_column(Status::cases(), Globals::ENUM_FIELD_VALUE)
-            )->default(Status::Available->value);
+            $table->boolean(Model::FIELD_STATUS)->default(Status::Available->value);
             $table->timestamps();
         });
     }

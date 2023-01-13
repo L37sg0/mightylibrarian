@@ -14,8 +14,13 @@ class CategoryFactory extends Factory
      */
     public function definition()
     {
+        $categories = [
+            'Math', 'Science', 'History', 'Music', 'Languages',
+            'Culture', 'Sport', 'Literature', 'Technology', 'Lifestyle'
+        ];
+
         return [
-            Category::FIELD_NAME => $this->faker->name
+            Category::FIELD_NAME => $categories[(array_rand($categories))] . ' and ' . $categories[(array_rand($categories))]
         ];
     }
 }

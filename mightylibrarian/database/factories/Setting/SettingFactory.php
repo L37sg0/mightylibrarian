@@ -16,10 +16,10 @@ class SettingFactory extends Factory
      */
     public function definition()
     {
+        $settings = array_column(ReturnDays::cases(), Globals::ENUM_FIELD_VALUE);
+
         return [
-            Setting::FIELD_RETURN_DAYS  => array_rand(
-                array_column(ReturnDays::cases(),Globals::ENUM_FIELD_VALUE)
-            ),
+            Setting::FIELD_RETURN_DAYS  => $settings[array_rand($settings)],
             Setting::FIELD_FINE         => 5
         ];
     }

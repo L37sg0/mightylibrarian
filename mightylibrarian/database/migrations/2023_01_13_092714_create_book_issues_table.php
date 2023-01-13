@@ -25,10 +25,7 @@ return new class extends Migration
             $table->foreignId(Model::FIELD_BOOK_ID)->constrained(Book::TABLE_NAME);
             $table->timestamp(Model::FIELD_ISSUE_DATE);
             $table->timestamp(Model::FIELD_RETURN_DATE);
-            $table->enum(
-                Model::FIELD_ISSUE_STATUS,
-                array_column(IssueStatus::cases(), Globals::ENUM_FIELD_VALUE)
-            );
+            $table->boolean(Model::FIELD_ISSUE_STATUS);
             $table->timestamp(Model::FIELD_RETURN_DAY)->nullable();
             $table->timestamps();
         });

@@ -28,8 +28,9 @@ interface BookIssueFields
     ];
 
     public const CASTS = [
-        self::FIELD_ISSUE_DATE  => Globals::CAST_FORMAT_DATETIME_YMD,
-        self::FIELD_RETURN_DATE => Globals::CAST_FORMAT_DATETIME_YMD,
-        self::FIELD_RETURN_DAY  => Globals::CAST_FORMAT_DATETIME_YMD
+        self::FIELD_ISSUE_DATE      => Globals::CAST_FORMAT_DATETIME_YMD,
+        self::FIELD_RETURN_DATE     => Globals::CAST_FORMAT_DATETIME_YMD,
+        self::FIELD_RETURN_DAY      => Globals::CAST_FORMAT_DATETIME_YMD,
+        self::FIELD_ISSUE_STATUS    => IssueStatus::class
     ];
 }

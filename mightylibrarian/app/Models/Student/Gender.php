@@ -2,9 +2,9 @@
 
 namespace App\Models\Student;
 
-enum Gender: string
+enum Gender: int
 {
-    case Male   = 'M';
-    case Female = 'F';
-    case None   = 'NA';
+    case Male   = 1;
+    case Female = 2;
+    case None   = 0;
 }

@@ -17,4 +17,8 @@ interface SettingFields
         self::FIELD_FINE
     ];
 
+    public const CASTS = [
+        self::FIELD_RETURN_DAYS => ReturnDays::class
+    ];
+
 }

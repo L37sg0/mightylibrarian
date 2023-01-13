@@ -11,4 +11,5 @@ class Setting extends Model implements SettingFields
 
     protected $table    = self::TABLE_NAME;
     protected $fillable = self::FILLABLE;
+    protected $casts    = self::CASTS;
 }

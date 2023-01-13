@@ -2,8 +2,8 @@
 
 namespace App\Models\Book;
 
-enum Status: string
+enum Status: int
 {
-    case New = 'New';
-    case Used = 'Used';
+    case Available  = 1;
+    case Issued     = 0;
 }

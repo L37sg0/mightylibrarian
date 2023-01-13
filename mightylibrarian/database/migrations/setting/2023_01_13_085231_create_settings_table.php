@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Globals;
 use App\Models\Setting\ReturnDays;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -17,12 +18,10 @@ return new class extends Migration
     {
         Schema::create(Model::TABLE_NAME, function (Blueprint $table) {
             $table->id();
-            $table->enum(Model::FIELD_RETURN_DAYS, [
-                ReturnDays::Week->value,
-                ReturnDays::Two_Weeks->value,
-                ReturnDays::Three_Weeks->value,
-                ReturnDays::Month->value
-            ]);
+            $table->enum(
+                Model::FIELD_RETURN_DAYS,
+                array_column(ReturnDays::cases(), Globals::ENUM_FIELD_VALUE)
+            );
             $table->string(Model::FIELD_FINE);
             $table->timestamps();
         });

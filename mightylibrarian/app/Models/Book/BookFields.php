@@ -15,6 +15,10 @@ interface BookFields
     public const FIELD_PUBLISHER_ID = 'publisher_id';
     public const FIELD_STATUS       = 'status';
 
+    public const REL_AUTHOR         = 'author';
+    public const REL_CATEGORY       = 'category';
+    public const REL_PUBLISHER      = 'publisher';
+
     public const FILLABLE = [
         self::FIELD_NAME,
         self::FIELD_CATEGORY_ID,

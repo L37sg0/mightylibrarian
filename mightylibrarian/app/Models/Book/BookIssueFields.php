@@ -18,6 +18,9 @@ interface BookIssueFields
     public const FIELD_ISSUE_STATUS = 'issue_status';
     public const FIELD_RETURN_DAY   = 'return_day';
 
+    public const REL_STUDENT        = 'student';
+    public const REL_BOOK           = 'book';
+
     public const FILLABLE = [
         self::FIELD_STUDENT_ID,
         self::FIELD_BOOK_ID,

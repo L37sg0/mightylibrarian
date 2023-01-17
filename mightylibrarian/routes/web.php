@@ -29,16 +29,14 @@ Route::get('/', function () {
 Route::get('dashboard', [Author::class, 'index'])->name('dashboard');
 Route::group(['as' => 'dashboard.', 'prefix' => 'dashboard'], static function () {
 
+// Author CRUD
     Route::group(['as' => 'authors.', 'prefix' => 'authors'], static function () {
         Route::get('', [Author::class, 'index'])->name('list');
-        Route::get('create', [Author::class, 'create'])->name('create');
+        Route::post('create', [Author::class, 'create'])->name('create');
         Route::post('update/{author}', [Author::class, 'update'])->name('update');
         Route::post('delete/{author}', [Author::class, 'destroy'])->name('delete');
-        Route::post('store', [Author::class, 'store'])->name('store');
     });
 });
-//Route::get('/dashboard', [Author::class, 'index'])->name('dashboard');
-// Author CRUD
 // Category CRUD
 Route::get('/dashboard/categories', [Category::class, 'index'])->name('categories');
 // Publisher CRUD

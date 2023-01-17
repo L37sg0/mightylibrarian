@@ -17,33 +17,27 @@ class Author extends Controller
         return view('admin.author.index', compact('authors'));
     }
 
-    public function create()
+    public function create(Update $request)
     {
-        return view('admin.author.new-or-edit');
+        $author = new Model();
+        $author->fill([
+            Model::FIELD_NAME => $request->get(Model::FIELD_NAME)
+        ])->save();
+        return redirect(route('dashboard.authors.list'));
     }
 
-    public function store(Store $request)
+    public function update(Update $request, $id)
     {
-
-    }
-
-    public function edit(Author $author)
-    {
-
-    }
-
-    public function update(Update $request, $author)
-    {
-        dd($request->all());
-        dd($request->validated('_token'));
-        dd($request->get('name'.$author));
-        dd(\App\Models\Author\Author::find($author));
-        return $request->get('name');
-        dd($author, $request->name);
+        $author = Model::find($id);
+        $author->fill([
+            Model::FIELD_NAME => $request->get(Model::FIELD_NAME)
+        ])->save();
+        return redirect(route('dashboard.authors.list'));
     }
 
     public function destroy($id)
     {
-
+        (Model::find($id))->delete();
+        return redirect(route('dashboard.authors.list'));
     }
 }

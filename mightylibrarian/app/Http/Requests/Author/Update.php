@@ -9,15 +9,14 @@ use Illuminate\Foundation\Http\FormRequest;
 class Update extends FormRequest
 {
 //    public function authorize() {
-//        return Author::find($this->route('author'));
+//        return false;
 //    }
 
     public function rules() {
         return [];
-        return [
-            Author::FIELD_NAME => Globals::FORM_FIELD_REQUIRED
+//            Author::FIELD_NAME => Globals::FORM_FIELD_REQUIRED
 //            . '|' . Globals::FORM_FIELD_UNIQUE . ':' . Author::TABLE_NAME
-            . ',' . Globals::FORM_FIELD_EXCEPT . ',' . Author::FIELD_ID
-        ];
+////            . ',' . Globals::FORM_FIELD_EXCEPT . ',' . Author::FIELD_ID
+//        ];
     }
 }

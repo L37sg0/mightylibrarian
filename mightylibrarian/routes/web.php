@@ -29,6 +29,11 @@ Route::get('/', function () {
 Route::get('/dashboard', [Author::class, 'index'])->name('dashboard');
 // Author CRUD
 Route::get('/dashboard/authors', [Author::class, 'index'])->name('authors');
+Route::get('/dashboard/authors/create', [Author::class, 'create'])->name('authors.create');
+Route::get('/dashboard/authors/edit/{author}', [Author::class, 'edit'])->name('authors.edit');
+Route::post('/dashboard/authors/update/{author}', [Author::class, 'update'])->name('authors.update');
+Route::post('/dashboard/authors/delete/{author}', [Author::class, 'destroy'])->name('authors.delete');
+Route::post('/dashboard/authors/store', [Author::class, 'store'])->name('authors.store');
 // Category CRUD
 Route::get('/dashboard/categories', [Category::class, 'index'])->name('categories');
 // Publisher CRUD

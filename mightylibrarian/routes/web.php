@@ -26,14 +26,19 @@ Route::get('/', function () {
 /*
  * Dashboard
  */
-Route::get('/dashboard', [Author::class, 'index'])->name('dashboard');
+Route::get('dashboard', [Author::class, 'index'])->name('dashboard');
+Route::group(['as' => 'dashboard.', 'prefix' => 'dashboard'], static function () {
+
+    Route::group(['as' => 'authors.', 'prefix' => 'authors'], static function () {
+        Route::get('', [Author::class, 'index'])->name('list');
+        Route::get('create', [Author::class, 'create'])->name('create');
+        Route::post('update/{author}', [Author::class, 'update'])->name('update');
+        Route::post('delete/{author}', [Author::class, 'destroy'])->name('delete');
+        Route::post('store', [Author::class, 'store'])->name('store');
+    });
+});
+//Route::get('/dashboard', [Author::class, 'index'])->name('dashboard');
 // Author CRUD
-Route::get('/dashboard/authors', [Author::class, 'index'])->name('authors');
-Route::get('/dashboard/authors/create', [Author::class, 'create'])->name('authors.create');
-Route::get('/dashboard/authors/edit/{author}', [Author::class, 'edit'])->name('authors.edit');
-Route::post('/dashboard/authors/update/{author}', [Author::class, 'update'])->name('authors.update');
-Route::post('/dashboard/authors/delete/{author}', [Author::class, 'destroy'])->name('authors.delete');
-Route::post('/dashboard/authors/store', [Author::class, 'store'])->name('authors.store');
 // Category CRUD
 Route::get('/dashboard/categories', [Category::class, 'index'])->name('categories');
 // Publisher CRUD

@@ -9,7 +9,7 @@
                     <a class="nav-link" aria-current="page" href="{{route('dashboard')}}">{{__('Dashboard')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="{{route('authors')}}">{{__('Authors')}}</a>
+                    <a class="nav-link" aria-current="page" href="{{route('dashboard.authors.list')}}">{{__('Authors')}}</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="{{route('categories')}}">{{__('Categories')}}</a>

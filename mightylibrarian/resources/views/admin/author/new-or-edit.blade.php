@@ -29,7 +29,7 @@ use App\Models\Author\Author;
                                id="name"
                                name="name"
                                placeholder="{{__('Author Name')}}"
-                                value="{{($author) ? $author->getAttribute(Author::FIELD_NAME) : ''}}">
+                               value="{{($author) ? $author->getAttribute(Author::FIELD_NAME) : ''}}">
                         <label for="name">{{__('Author Name')}}</label>
                     </div>
                 </div>

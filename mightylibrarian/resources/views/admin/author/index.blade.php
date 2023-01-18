@@ -8,7 +8,7 @@ $author = null;
 @section('content')
 <div class="container-fluid">
     <div class="row">
-        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <main class="col-md-9 ms-sm-auto col-lg-12 px-md-4">
             <div class="row">
                 <div class="col-md-3">
                     <h2>{{__('All Authors')}}</h2>
@@ -50,5 +50,9 @@ $author = null;
             </div>
         </main>
     </div>
+    <div class="text-center justify-content-between">
+        {{ $authors->appends(request()->input())->links('admin.layouts.components.pagination') }}
+    </div>
+
 </div>
 @endsection

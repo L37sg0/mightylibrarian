@@ -16,6 +16,9 @@
         <div class="container-fluid">
             @include('admin.layouts.components.navbar')
         </div>
+        <div class="container-fluid">
+            @include('admin.layouts.components.messages')
+        </div>
     </header>
     <main>
         @yield('content')

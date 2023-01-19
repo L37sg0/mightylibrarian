@@ -47,6 +47,19 @@ services:
         target: /var/lib/mysql
       - ./mysql/my.cnf:/etc/mysql/my.cnf
 
+  # Search engine
+  meili:
+    image: getmeili/meilisearch:v0.30
+    container_name: ${PROJECT_NAME}_search
+    restart: unless-stopped
+    tty: true
+    environment:
+      MEILI_MASTER_KEY: ${MEILI_MASTER_KEY}
+    volumes:
+      - ./meili_data:/meili_data
+    ports:
+      - "7700:7700"
+
 # DOCKER Volumes
 volumes:
   db:

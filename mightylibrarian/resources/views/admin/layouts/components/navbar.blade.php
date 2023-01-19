@@ -16,8 +16,15 @@
                 @endforeach
             </ul>
         </div>
-        <form role="search">
-            <input class="form-control" type="search" placeholder="{{__('Search')}}" aria-label="Search">
+        <form role="search"
+              action="{{request()->url()}}"
+              method="post">
+            @csrf
+            <input name="search"
+                   class="form-control"
+                   type="search"
+                   placeholder="{{__('Search')}}"
+                   aria-label="Search">
         </form>
     </div>
 </nav>

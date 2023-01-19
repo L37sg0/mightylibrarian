@@ -32,6 +32,7 @@ Route::group(['as' => 'dashboard.', 'prefix' => 'dashboard'], static function ()
 // Author CRUD
     Route::group(['as' => 'authors.', 'prefix' => 'authors'], static function () {
         Route::get('', [Author::class, 'index'])->name('list');
+        Route::post('', [Author::class, 'index'])->name('list');
         Route::post('create', [Author::class, 'create'])->name('create');
         Route::post('update/{author}', [Author::class, 'update'])->name('update');
         Route::post('delete/{author}', [Author::class, 'destroy'])->name('delete');

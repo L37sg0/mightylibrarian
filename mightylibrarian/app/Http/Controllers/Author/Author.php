@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Author\Update;
 use App\Models\Author\Author as Model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\MessageBag;
+use Throwable;
 
 class Author extends Controller
 {
@@ -29,7 +31,7 @@ class Author extends Controller
             Model::FIELD_NAME => $name
         ])->save();
 
-        $messages = new MessageBag(["Author '$name' created."]);
+        Session::flash('success',"Author '$name' created.");
         return redirect(route('dashboard.authors.list'));
     }
 
@@ -42,13 +44,23 @@ class Author extends Controller
             Model::FIELD_NAME => $name
         ])->save();
 
-        $messages = new MessageBag(["Author '$name' updated."]);
+        Session::flash('success', "Author '$name' updated.");
         return redirect(route('dashboard.authors.list'));
     }
 
     public function destroy($id)
     {
-        (Model::find($id))->delete();
-        return redirect(route('dashboard.authors.list'));
+        $author = Model::find($id);
+        $name = $author->getAttribute(Model::FIELD_NAME);
+        $errors = [];
+
+        try {
+            $author->delete();
+            Session::flash('success', "Author '$name' deleted.");
+        } catch (Throwable $e) {
+            $errors[] = "Author $name could not be deleted.";
+        }
+
+        return redirect(route('dashboard.authors.list'))->withErrors($errors);
     }
 }

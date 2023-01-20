@@ -30,83 +30,60 @@ Route::get('dashboard', [Author::class, 'index'])->name('dashboard');
 Route::group(['as' => 'dashboard.', 'prefix' => 'dashboard'], static function () {
 
 // Author CRUD
-    Route::group(['as' => 'authors.', 'prefix' => 'authors'], static function () {
+    Route::group(['as' => 'author.', 'prefix' => 'authors'], static function () {
         Route::match(['get', 'post'],'', [Author::class, 'index'])->name('list');
-//        Route::get('', [Author::class, 'index'])->name('list');
-//        Route::post('', [Author::class, 'index'])->name('list');
         Route::post('create', [Author::class, 'create'])->name('create');
         Route::post('update/{author}', [Author::class, 'update'])->name('update');
         Route::post('delete/{author}', [Author::class, 'destroy'])->name('delete');
     });
-//// Category CRUD
-//    Route::group(['as' => 'categories.', 'prefix' => 'categories'], static function () {
-//        Route::get('', [Category::class, 'index'])->name('list');
-//        Route::post('', [Category::class, 'index'])->name('list');
-//        Route::post('create', [Category::class, 'create'])->name('create');
-//        Route::post('update/{category}', [Category::class, 'update'])->name('update');
-//        Route::post('delete/{category}', [Category::class, 'destroy'])->name('delete');
-//    });
-//// Publisher CRUD
-//    Route::group(['as' => 'publishers.', 'prefix' => 'publishers'], static function () {
-//        Route::get('', [Author::class, 'index'])->name('list');
-//        Route::post('', [Author::class, 'index'])->name('list');
-//        Route::post('create', [Author::class, 'create'])->name('create');
-//        Route::post('update/{author}', [Author::class, 'update'])->name('update');
-//        Route::post('delete/{author}', [Author::class, 'destroy'])->name('delete');
-//    });
-//// Book CRUD
-//    Route::group(['as' => 'books.', 'prefix' => 'books'], static function () {
-//        Route::get('', [Author::class, 'index'])->name('list');
-//        Route::post('', [Author::class, 'index'])->name('list');
-//        Route::post('create', [Author::class, 'create'])->name('create');
-//        Route::post('update/{author}', [Author::class, 'update'])->name('update');
-//        Route::post('delete/{author}', [Author::class, 'destroy'])->name('delete');
-//    });
-//// BookIssue CRUD
-//    Route::group(['as' => 'book-issues.', 'prefix' => 'book-issues'], static function () {
-//        Route::get('', [Author::class, 'index'])->name('list');
-//        Route::post('', [Author::class, 'index'])->name('list');
-//        Route::post('create', [Author::class, 'create'])->name('create');
-//        Route::post('update/{author}', [Author::class, 'update'])->name('update');
-//        Route::post('delete/{author}', [Author::class, 'destroy'])->name('delete');
-//    });
-//// Student CRUD
-//    Route::group(['as' => 'students.', 'prefix' => 'students'], static function () {
-//        Route::get('', [Author::class, 'index'])->name('list');
-//        Route::post('', [Author::class, 'index'])->name('list');
-//        Route::post('create', [Author::class, 'create'])->name('create');
-//        Route::post('update/{author}', [Author::class, 'update'])->name('update');
-//        Route::post('delete/{author}', [Author::class, 'destroy'])->name('delete');
-//    });
-//// Report CRUD
-//    Route::group(['as' => 'reports.', 'prefix' => 'reports'], static function () {
-//        Route::get('', [Author::class, 'index'])->name('list');
-//        Route::post('', [Author::class, 'index'])->name('list');
-//        Route::post('create', [Author::class, 'create'])->name('create');
-//        Route::post('update/{author}', [Author::class, 'update'])->name('update');
-//        Route::post('delete/{author}', [Author::class, 'destroy'])->name('delete');
-//    });
-//// Setting CRUD
-//    Route::group(['as' => 'settings.', 'prefix' => 'settings'], static function () {
-//        Route::get('', [Author::class, 'index'])->name('list');
-//        Route::post('', [Author::class, 'index'])->name('list');
-//        Route::post('create', [Author::class, 'create'])->name('create');
-//        Route::post('update/{author}', [Author::class, 'update'])->name('update');
-//        Route::post('delete/{author}', [Author::class, 'destroy'])->name('delete');
-//    });
+// Category CRUD
+    Route::group(['as' => 'category.', 'prefix' => 'categories'], static function () {
+        Route::match(['get', 'post'], '', [Category::class, 'index'])->name('list');
+        Route::post('create', [Category::class, 'create'])->name('create');
+        Route::post('update/{category}', [Category::class, 'update'])->name('update');
+        Route::post('delete/{category}', [Category::class, 'destroy'])->name('delete');
+    });
+// Publisher CRUD
+    Route::group(['as' => 'publisher.', 'prefix' => 'publishers'], static function () {
+        Route::match(['get', 'post'], '', [Publisher::class, 'index'])->name('list');
+        Route::post('create', [Publisher::class, 'create'])->name('create');
+        Route::post('update/{publisher}', [Publisher::class, 'update'])->name('update');
+        Route::post('delete/{publisher}', [Publisher::class, 'destroy'])->name('delete');
+    });
+// Book CRUD
+    Route::group(['as' => 'book.', 'prefix' => 'books'], static function () {
+        Route::match(['get', 'post'], '', [Book::class, 'index'])->name('list');
+        Route::post('create', [Book::class, 'create'])->name('create');
+        Route::post('update/{book}', [Book::class, 'update'])->name('update');
+        Route::post('delete/{book}', [Book::class, 'destroy'])->name('delete');
+    });
+// BookIssue CRUD
+    Route::group(['as' => 'book-issue.', 'prefix' => 'book-issues'], static function () {
+        Route::match(['get', 'post'], '', [BookIssue::class, 'index'])->name('list');
+        Route::post('create', [BookIssue::class, 'create'])->name('create');
+        Route::post('update/{book-issue}', [BookIssue::class, 'update'])->name('update');
+        Route::post('delete/{book-issue}', [BookIssue::class, 'destroy'])->name('delete');
+    });
+// Student CRUD
+    Route::group(['as' => 'student.', 'prefix' => 'students'], static function () {
+        Route::match(['get', 'post'], '', [Student::class, 'index'])->name('list');
+        Route::post('create', [Student::class, 'create'])->name('create');
+        Route::post('update/{student}', [Student::class, 'update'])->name('update');
+        Route::post('delete/{student}', [Student::class, 'destroy'])->name('delete');
+    });
+// Report CRUD
+    Route::group(['as' => 'report.', 'prefix' => 'reports'], static function () {
+        Route::match(['get', 'post'], '', [Author::class, 'index'])->name('list');
+        Route::post('create', [Author::class, 'create'])->name('create');
+        Route::post('update/{report}', [Author::class, 'update'])->name('update');
+        Route::post('delete/{report}', [Author::class, 'destroy'])->name('delete');
+    });
+// Setting CRUD
+    Route::group(['as' => 'setting.', 'prefix' => 'settings'], static function () {
+        Route::match(['get', 'post'], '', [Setting::class, 'index'])->name('list');
+        Route::post('create', [Setting::class, 'create'])->name('create');
+        Route::post('update/{setting}', [Setting::class, 'update'])->name('update');
+        Route::post('delete/{setting}', [Setting::class, 'destroy'])->name('delete');
+    });
 
 });
-// Category CRUD
-Route::get('/dashboard/categories', [Category::class, 'index'])->name('categories');
-// Publisher CRUD
-Route::get('/dashboard/publishers', [Publisher::class, 'index'])->name('publishers');
-// Book CRUD
-Route::get('/dashboard/books', [Book::class, 'index'])->name('books');
-// BookIssue CRUD
-Route::get('/dashboard/book-issues', [BookIssue::class, 'index'])->name('book-issues');
-// Student CRUD
-Route::get('/dashboard/students', [Student::class, 'index'])->name('students');
-// Report CRUD
-Route::get('/dashboard/reports', [Author::class, 'index'])->name('reports');
-// Setting CRUD
-Route::get('/dashboard/settings', [Setting::class, 'index'])->name('settings');

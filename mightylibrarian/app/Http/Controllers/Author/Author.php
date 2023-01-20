@@ -7,60 +7,62 @@ use App\Http\Requests\Author\Update;
 use App\Models\Author\Author as Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\MessageBag;
 use Throwable;
 
 class Author extends Controller
 {
+    public $path = "author";
+
     public function index(Request $request)
     {
-        $authors = Model::Paginate(10);
-        $search = $request->get('search');
+        $path   = $this->path;
+        $models = Model::Paginate(10);
+        $search = $request->get("search");
         if ($search) {
-            $authors = Model::search($search)->paginate(10);
+            $models = Model::search($search)->paginate(10);
         }
 
-        return view('admin.author.index', compact('authors'));
+        return view("admin.$this->path.index", compact("models", "path"));
     }
 
     public function create(Update $request)
     {
-        $author = new Model();
+        $model = new Model();
         $name   = $request->get(Model::FIELD_NAME);
-        $author->fill([
+        $model->fill([
             Model::FIELD_NAME => $name
         ])->save();
 
-        Session::flash('success',"Author '$name' created.");
-        return redirect(route('dashboard.authors.list'));
+        Session::flash("success", __("messages.success.$this->path.created", ["name" => $name]));
+        return redirect(route("dashboard.$this->path.list"));
     }
 
     public function update(Update $request, $id)
     {
-        $author = Model::find($id);
+        $model = Model::find($id);
 
         $name = $request->get(Model::FIELD_NAME);
-        $author->fill([
+        $model->fill([
             Model::FIELD_NAME => $name
         ])->save();
 
-        Session::flash('success', "Author '$name' updated.");
-        return redirect(route('dashboard.authors.list'));
+        Session::flash("success", __("messages.success.$this->path.updated", ["name" => $name]));
+        return redirect(route("dashboard.$this->path.list"));
     }
 
     public function destroy($id)
     {
-        $author = Model::find($id);
-        $name = $author->getAttribute(Model::FIELD_NAME);
+        $model = Model::find($id);
+        $name = $model->getAttribute(Model::FIELD_NAME);
         $errors = [];
 
         try {
-            $author->delete();
-            Session::flash('success', "Author '$name' deleted.");
+            $model->delete();
+            Session::flash("success", __("messages.success.$this->path.deleted", ["name" => $name]));
         } catch (Throwable $e) {
-            $errors[] = "Author $name could not be deleted.";
+            $errors[] = __("messages.error.$this->path.deleted", ["name" => $name]);
         }
 
-        return redirect(route('dashboard.authors.list'))->withErrors($errors);
+        return redirect(route("dashboard.$this->path.list"))->withErrors($errors);
     }
 }

@@ -1,25 +1,25 @@
 @php
-use App\Models\Author\Author;
+use App\Models\Author\Author as Model;
 @endphp
 
 <button type="button" class="btn btn-link" data-bs-toggle="modal"
-        data-bs-target="#authorCreateViewEdit{{($author) ? $author->getAttribute(Author::FIELD_ID) : ''}}">
-    {{($author) ? __('Edit') : __('Add New')}}
+        data-bs-target="#{{$path}}CreateViewEdit{{($model) ? $model->getAttribute(Model::FIELD_ID) : ''}}">
+    {{($model) ? __('Edit') : __('Add New')}}
 </button>
 <div class="modal fade"
-     id="authorCreateViewEdit{{($author) ? $author->getAttribute(Author::FIELD_ID) : ''}}"
+     id="{{$path}}CreateViewEdit{{($model) ? $model->getAttribute(Model::FIELD_ID) : ''}}"
      tabindex="-1"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content rounded-4 shadow">
             <div class="modal-header p-5 pb-4 border-bottom-0">
-                <h1 class="fw-bold mb-0 fs-2">{{($author) ? __('Edit Author') : __('New Author')}}</h1>
+                <h1 class="fw-bold mb-0 fs-2">{{($model) ? __('Edit Author') : __('New Author')}}</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                         aria-label="Close"></button>
             </div>
             <form role="form"
                   class="form-hidden"
-                  action="{{($author) ? route('dashboard.authors.update', $author) : route('dashboard.authors.create')}}"
+                  action="{{($model) ? route("dashboard.$path.update", $model) : route("dashboard.$path.create")}}"
                   method="post">
                 @csrf
                 <div class="modal-body p-5 pt-0">
@@ -29,7 +29,7 @@ use App\Models\Author\Author;
                                id="name"
                                name="name"
                                placeholder="{{__('Author Name')}}"
-                               value="{{($author) ? $author->getAttribute(Author::FIELD_NAME) : ''}}">
+                               value="{{($model) ? $model->getAttribute(Model::FIELD_NAME) : ''}}">
                         <label for="name">{{__('Author Name')}}</label>
                     </div>
                 </div>

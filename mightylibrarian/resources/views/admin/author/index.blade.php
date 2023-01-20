@@ -1,7 +1,7 @@
 @php
 use App\Models\Author\Author as Model;
 
-$author = null;
+$model = null;
 @endphp
 @extends('admin.layouts.app')
 
@@ -14,7 +14,7 @@ $author = null;
                     <h2>{{__('All Authors')}}</h2>
                 </div>
                 <div class="offset-md-7 col-md-2">
-                    @include('admin.author.new-or-edit')
+                    @include("admin.$path.new-or-edit")
                 </div>
             </div>
             <div class="table-responsive">
@@ -27,13 +27,13 @@ $author = null;
                     </tr>
                     </thead>
                     <tbody>
-                    @forelse($authors as $author)
+                    @forelse($models as $model)
                     <tr>
-                        <td>{{$author->getAttribute(Model::FIELD_ID)}}</td>
-                        <td>{{$author->getAttribute(Model::FIELD_NAME)}}</td>
+                        <td>{{$model->getAttribute(Model::FIELD_ID)}}</td>
+                        <td>{{$model->getAttribute(Model::FIELD_NAME)}}</td>
                         <td>
-                            @include('admin.author.new-or-edit')
-                            <form action="{{route('dashboard.authors.delete',$author)}}" method="post"
+                            @include("admin.$path.new-or-edit")
+                            <form action="{{route("dashboard.$path.delete",$model)}}" method="post"
                                   class="form-hidden">
                                 @csrf
                                 <button class="btn btn-link">{{__('Delete')}}</button>
@@ -51,7 +51,7 @@ $author = null;
         </main>
     </div>
     <div class="text-center justify-content-between">
-        {{ $authors->appends(request()->input())->links('admin.layouts.components.pagination') }}
+        {{ $models->appends(request()->input())->links('admin.layouts.components.pagination') }}
     </div>
 
 </div>

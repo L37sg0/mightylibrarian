@@ -8,10 +8,12 @@ use App\Models\Publisher\Publisher;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Laravel\Scout\Searchable;
 
 class Book extends Model implements BookFields
 {
     use HasFactory;
+    use Searchable;
 
     protected $table    = self::TABLE_NAME;
     protected $fillable = self::FILLABLE;

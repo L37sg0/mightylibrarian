@@ -10,35 +10,35 @@ interface Menu
             "label" => "Dashboard"
         ],
         [
-            "route" => "dashboard.authors.list",
+            "route" => "dashboard.author.list",
             "label" => "Authors"
         ],
         [
-            "route" => "categories",
+            "route" => "dashboard.category.list",
             "label" => "Categories"
         ],
         [
-            "route" => "publishers",
+            "route" => "dashboard.publisher.list",
             "label" => "Publishers"
         ],
         [
-            "route" => "books",
+            "route" => "dashboard.book.list",
             "label" => "Books"
         ],
         [
-            "route" => "book-issues",
+            "route" => "dashboard.book-issue.list",
             "label" => "Book Issues"
         ],
         [
-           "route" => "students",
+           "route" => "dashboard.student.list",
            "label" => "Students"
         ],
         [
-            "route" => "reports",
+            "route" => "dashboard.report.list",
             "label" => "Reports"
         ],
         [
-            "route" => "settings",
+            "route" => "dashboard.setting.list",
             "label" => "Settings"
         ]
     ];

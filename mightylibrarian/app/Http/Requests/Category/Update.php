@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Requests\Author;
+namespace App\Http\Requests\Category;
 
-use App\Models\Author\Author as Model;
+use App\Models\Category\Category as Model;
 use App\Models\Globals;
 use Illuminate\Foundation\Http\FormRequest;
 

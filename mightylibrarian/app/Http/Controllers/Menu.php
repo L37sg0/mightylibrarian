@@ -14,14 +14,6 @@ interface Menu
             "label" => "Authors"
         ],
         [
-            "route" => "dashboard.category.list",
-            "label" => "Categories"
-        ],
-        [
-            "route" => "dashboard.publisher.list",
-            "label" => "Publishers"
-        ],
-        [
             "route" => "dashboard.book.list",
             "label" => "Books"
         ],
@@ -30,12 +22,20 @@ interface Menu
             "label" => "Book Issues"
         ],
         [
-           "route" => "dashboard.student.list",
-           "label" => "Students"
+            "route" => "dashboard.category.list",
+            "label" => "Categories"
+        ],
+        [
+            "route" => "dashboard.publisher.list",
+            "label" => "Publishers"
         ],
         [
             "route" => "dashboard.report.list",
             "label" => "Reports"
+        ],
+        [
+           "route" => "dashboard.student.list",
+           "label" => "Students"
         ],
         [
             "route" => "dashboard.setting.list",

@@ -22,7 +22,18 @@
             </div>
         </header>
         <main class="container-lg bg-light py-3 my-2">
-            @yield('content')
+            <div class="container-fluid">
+                <div class="row">
+                    <main class="col-md-9 ms-sm-auto col-lg-12 px-md-4">
+                        @yield('content-head')
+                        @yield('content')
+                    </main>
+                </div>
+                <div class="text-center justify-content-between">
+                    @yield('content-pagination')
+                </div>
+
+            </div>
         </main>
         <footer class="container-lg bg-light py-3 my-2">
             @include('admin.layouts.components.footer')

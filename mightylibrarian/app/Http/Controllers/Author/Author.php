@@ -12,17 +12,26 @@ use Throwable;
 class Author extends Controller
 {
     public $path = "author";
+    public $labelSingle = "Author";
+    public $labelAll = "Authors";
 
     public function index(Request $request)
     {
         $path   = $this->path;
+        $labelSingle = $this->labelSingle;
+        $labelAll = $this->labelAll;
         $models = Model::Paginate(10);
         $search = $request->get("search");
         if ($search) {
             $models = Model::search($search)->paginate(10);
         }
 
-        return view("admin.$this->path.index", compact("models", "path"));
+        return view("admin.$this->path.index", compact(
+            "models",
+            "path",
+            "labelSingle",
+            "labelAll"
+        ));
     }
 
     public function create(Update $request)

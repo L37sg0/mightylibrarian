@@ -1,36 +1,42 @@
-@extends('admin.layouts.app')
+@php
+    use App\Models\Author\Author;
+    use App\Models\Book\BookIssue as Model;
+    use App\Models\Category\Category;
+    use App\Models\Publisher\Publisher;
+@endphp
 
-@section('content')
-<div class="modal" tabindex="-1">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">New Author</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<button type="button" class="btn btn-link" data-bs-toggle="modal"
+        data-bs-target="#{{$path}}CreateViewEdit{{($model) ? $model->getAttribute(Model::FIELD_ID) : ''}}">
+    {{($model) ? __('Edit') : __('Add New')}}
+</button>
+<div class="modal fade"
+     id="{{$path}}CreateViewEdit{{($model) ? $model->getAttribute(Model::FIELD_ID) : ''}}"
+     tabindex="-1"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content rounded-4 shadow">
+            <div class="modal-header p-5 pb-4 border-bottom-0">
+                <h1 class="fw-bold mb-0 fs-2">{{($model) ? __("Edit $labelSingle") : __("New $labelSingle")}}</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
             </div>
-            <div class="row">
-                <div class="offset-md-3 col-md-6">
-                    <form class="yourform" action="{{ route('authors.store') }}" method="post" autocomplete="off">
-                        @csrf
-                        <div class="form-group">
-                            <label>Author Name</label>
-                            <input type="text" class="form-control @error('name') isinvalid @enderror"
-                                   placeholder="Author Name" name="name" value="{{ old('name') }}" required>
-                            @error('name')
-                            <div class="alert alert-danger" role="alert">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                        </div>
-                        <input type="submit" name="save" class="btn btn-danger" value="save" required>
-                    </form>
+            <form role="form"
+                  class="form-hidden"
+                  action="{{($model) ? route("dashboard.$path.update", $model) : route("dashboard.$path.create")}}"
+                  method="post">
+                @csrf
+                <div class="modal-body p-5 pt-0">
+                    <div class="form-floating mb-3">
+
+                    </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary"
+                            data-bs-dismiss="modal">{{__('Close')}}
+                    </button>
+                    <button type="submit" class="btn btn-primary">{{__('Save')}}</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
-@endsection

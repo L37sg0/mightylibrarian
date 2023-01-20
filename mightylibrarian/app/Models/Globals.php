@@ -16,7 +16,8 @@ interface Globals
     public const DATE_FORMAT_YMD    = 'Y-m-d';
 
     // FormRequest constants
-    public const FORM_FIELD_REQUIRED  = 'required';
-    public const FORM_FIELD_UNIQUE    = 'unique';
-    public const FORM_FIELD_EXCEPT    = 'except';
+    public const FORM_FIELD_REQUIRED    = 'required';
+    public const FORM_FIELD_UNIQUE      = 'unique';
+    public const FORM_FIELD_EXCEPT      = 'except';
+    public const FORM_FIELD_EMAIL       = 'email';
 }

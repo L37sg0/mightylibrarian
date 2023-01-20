@@ -16,9 +16,9 @@ return [
             'deleted' => 'Book :name deleted'
         ],
         'book-issue' => [
-            'created' => 'Book Issue :name created.',
-            'updated' => 'Book Issue :name updated.',
-            'deleted' => 'Book Issue :name deleted'
+            'created' => 'Book Issue for :name created.',
+            'updated' => 'Book Issue for :name updated.',
+            'deleted' => 'Book Issue for :name deleted'
         ],
         'category' => [
             'created' => 'Category :name created.',
@@ -53,7 +53,7 @@ return [
             'deleted' => 'Book :name could not be deleted.'
         ],
         'book-issue' => [
-            'deleted' => 'Book Issue :name could not be deleted.'
+            'deleted' => 'Book Issue for :name could not be deleted.'
         ],
         'category' => [
             'deleted' => 'Category :name could not be deleted.'

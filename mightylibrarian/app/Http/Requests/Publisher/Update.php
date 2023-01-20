@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Requests\Author;
+namespace App\Http\Requests\Publisher;
 
-use App\Models\Author\Author as Model;
+use App\Models\Publisher\Publisher as Model;
 use App\Models\Globals;
 use Illuminate\Foundation\Http\FormRequest;
 

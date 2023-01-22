@@ -30,10 +30,6 @@ interface Menu
             "label" => "Publishers"
         ],
         [
-            "route" => "dashboard.report.list",
-            "label" => "Reports"
-        ],
-        [
            "route" => "dashboard.student.list",
            "label" => "Students"
         ],

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Book;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Book\Update;
 use App\Models\Book\Book as Model;
+use App\Models\Globals;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Throwable;
@@ -39,11 +40,20 @@ class Book extends Controller
         $model = new Model();
         $name = $request->get(Model::FIELD_NAME);
         $model->fill([
-            Model::FIELD_NAME => $name,
-            Model::FIELD_CATEGORY_ID => $request->get(Model::FIELD_CATEGORY_ID),
-            Model::FIELD_AUTHOR_ID => $request->get(Model::FIELD_AUTHOR_ID),
-            Model::FIELD_PUBLISHER_ID => $request->get(Model::FIELD_PUBLISHER_ID),
-            Model::FIELD_STATUS => $request->get(Model::FIELD_STATUS)
+            Model::FIELD_NAME           => $name,
+            Model::FIELD_CATEGORY_ID    => explode(
+                Globals::SEARCH_DIVIDER,
+                $request->get(Model::FIELD_CATEGORY_ID)
+            )[1],
+            Model::FIELD_AUTHOR_ID      => explode(
+                Globals::SEARCH_DIVIDER,
+             $request->get(Model::FIELD_AUTHOR_ID)
+            )[1],
+            Model::FIELD_PUBLISHER_ID   => explode(
+                Globals::SEARCH_DIVIDER,
+             $request->get(Model::FIELD_PUBLISHER_ID)
+            )[1],
+            Model::FIELD_STATUS         => $request->get(Model::FIELD_STATUS)
         ])->save();
 
         Session::flash("success", __("messages.success.$this->path.created", ["name" => $name]));
@@ -57,9 +67,18 @@ class Book extends Controller
         $name = $request->get(Model::FIELD_NAME);
         $model->fill([
             Model::FIELD_NAME           => $name,
-            Model::FIELD_CATEGORY_ID    => $request->get(Model::FIELD_CATEGORY_ID),
-            Model::FIELD_AUTHOR_ID      => $request->get(Model::FIELD_AUTHOR_ID),
-            Model::FIELD_PUBLISHER_ID   => $request->get(Model::FIELD_PUBLISHER_ID),
+            Model::FIELD_CATEGORY_ID    => explode(
+                Globals::SEARCH_DIVIDER,
+                $request->get(Model::FIELD_CATEGORY_ID)
+            )[1],
+            Model::FIELD_AUTHOR_ID      => explode(
+                Globals::SEARCH_DIVIDER,
+                $request->get(Model::FIELD_AUTHOR_ID)
+            )[1],
+            Model::FIELD_PUBLISHER_ID   => explode(
+                Globals::SEARCH_DIVIDER,
+                $request->get(Model::FIELD_PUBLISHER_ID)
+            )[1],
             Model::FIELD_STATUS         => $request->get(Model::FIELD_STATUS)
         ])->save();
 

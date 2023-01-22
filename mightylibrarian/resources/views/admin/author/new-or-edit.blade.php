@@ -13,7 +13,7 @@ use App\Models\Author\Author as Model;
     <div class="modal-dialog" role="document">
         <div class="modal-content rounded-4 shadow">
             <div class="modal-header p-5 pb-4 border-bottom-0">
-                <h1 class="fw-bold mb-0 fs-2">{{($model) ? __('Edit Author') : __('New Author')}}</h1>
+                <h1 class="fw-bold mb-0 fs-2">{{($model) ? __("Edit $labelSingle") : __("New $labelSingle")}}</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                         aria-label="Close"></button>
             </div>
@@ -28,9 +28,9 @@ use App\Models\Author\Author as Model;
                                class="form-control rounded-3"
                                id="name"
                                name="name"
-                               placeholder="{{__('Author Name')}}"
+                               placeholder="{{__("$labelSingle Name")}}"
                                value="{{($model) ? $model->getAttribute(Model::FIELD_NAME) : ''}}">
-                        <label for="name">{{__('Author Name')}}</label>
+                        <label for="name">{{__("$labelSingle Name")}}</label>
                     </div>
                 </div>
                 <div class="modal-footer">

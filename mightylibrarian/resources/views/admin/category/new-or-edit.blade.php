@@ -1,8 +1,5 @@
 @php
-    use App\Models\Author\Author;
-    use App\Models\Book\BookIssue as Model;
-    use App\Models\Category\Category;
-    use App\Models\Publisher\Publisher;
+    use App\Models\Category\Category as Model;
 @endphp
 
 <button type="button" class="btn btn-link" data-bs-toggle="modal"
@@ -27,7 +24,13 @@
                 @csrf
                 <div class="modal-body p-5 pt-0">
                     <div class="form-floating mb-3">
-
+                        <input type="text"
+                               class="form-control rounded-3"
+                               id="name"
+                               name="name"
+                               placeholder="{{__('Author Name')}}"
+                               value="{{($model) ? $model->getAttribute(Model::FIELD_NAME) : ''}}">
+                        <label for="name">{{__("$labelSingle Name")}}</label>
                     </div>
                 </div>
                 <div class="modal-footer">

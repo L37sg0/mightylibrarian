@@ -20,4 +20,6 @@ interface Globals
     public const FORM_FIELD_UNIQUE      = 'unique';
     public const FORM_FIELD_EXCEPT      = 'except';
     public const FORM_FIELD_EMAIL       = 'email';
+
+    public const SEARCH_DIVIDER = ', #';
 }

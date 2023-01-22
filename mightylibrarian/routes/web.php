@@ -4,6 +4,7 @@ use App\Http\Controllers\Author\Author;
 use App\Http\Controllers\Book\Book;
 use App\Http\Controllers\Book\BookIssue;
 use App\Http\Controllers\Category\Category;
+use App\Http\Controllers\Dashboard\Dashboard;
 use App\Http\Controllers\Publisher\Publisher;
 use App\Http\Controllers\Setting\Setting;
 use App\Http\Controllers\Student\Student;
@@ -26,9 +27,9 @@ Route::get('/', function () {
 /*
  * Dashboard
  */
-Route::get('dashboard', [Author::class, 'index'])->name('dashboard');
-Route::group(['as' => 'dashboard.', 'prefix' => 'dashboard'], static function () {
 
+Route::get('dashboard', [Dashboard::class, 'index'])->name('dashboard');
+Route::group(['as' => 'dashboard.', 'prefix' => 'dashboard'], static function () {
 // Author CRUD
     Route::group(['as' => 'author.', 'prefix' => 'authors'], static function () {
         Route::match(['get', 'post'],'', [Author::class, 'index'])->name('list');
@@ -64,13 +65,6 @@ Route::group(['as' => 'dashboard.', 'prefix' => 'dashboard'], static function ()
         Route::post('update/{publisher}', [Publisher::class, 'update'])->name('update');
         Route::post('delete/{publisher}', [Publisher::class, 'destroy'])->name('delete');
     });
-// Report CRUD
-    Route::group(['as' => 'report.', 'prefix' => 'reports'], static function () {
-        Route::match(['get', 'post'], '', [Author::class, 'index'])->name('list');
-        Route::post('create', [Author::class, 'create'])->name('create');
-        Route::post('update/{report}', [Author::class, 'update'])->name('update');
-        Route::post('delete/{report}', [Author::class, 'destroy'])->name('delete');
-    });
 // Student CRUD
     Route::group(['as' => 'student.', 'prefix' => 'students'], static function () {
         Route::match(['get', 'post'], '', [Student::class, 'index'])->name('list');
@@ -85,5 +79,4 @@ Route::group(['as' => 'dashboard.', 'prefix' => 'dashboard'], static function ()
         Route::post('update/{setting}', [Setting::class, 'update'])->name('update');
         Route::post('delete/{setting}', [Setting::class, 'destroy'])->name('delete');
     });
-
 });

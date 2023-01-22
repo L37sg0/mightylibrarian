@@ -12,6 +12,7 @@
         "laravel/sanctum": "^3.0",
         "laravel/scout": "^9.8",
         "laravel/tinker": "^2.7",
+        "livewire/livewire": "^2.11",
         "meilisearch/meilisearch-php": "^0.27.0"
     },
     "require-dev": {

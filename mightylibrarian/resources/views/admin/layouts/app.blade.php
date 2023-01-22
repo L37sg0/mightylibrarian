@@ -3,9 +3,7 @@
 <head>
     <title>{{env('APP_NAME')}}</title>
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
-    <script src="{{asset('js/bootstrap.min.js')}}"></script>
-    <script src="{{asset('js/popper-2.11.6.min.js')}}"></script>
-    <script src="{{asset('js/jquery-3.6.3.min.js')}}"></script>
+    @livewireStyles
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body class="d-flex h-100 text-center text-bg-light">
@@ -39,5 +37,9 @@
             @include('admin.layouts.components.footer')
         </footer>
     </div>
+    @livewireScripts
+    <script src="{{asset('js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('js/popper-2.11.6.min.js')}}"></script>
+    <script src="{{asset('js/jquery-3.6.3.min.js')}}"></script>
 </body>
 </html>

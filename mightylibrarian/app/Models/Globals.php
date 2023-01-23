@@ -14,6 +14,7 @@ interface Globals
     public const ENUM_FIELD_VALUE   = 'value';
 
     public const DATE_FORMAT_YMD    = 'Y-m-d';
+    public const DATEFORMAT_DMY     = 'd/m/Y';
 
     // FormRequest constants
     public const FORM_FIELD_REQUIRED    = 'required';

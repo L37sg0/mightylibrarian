@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Book;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Book\Update;
+use App\Http\Requests\Book\IssueUpdate as Update;
 use App\Models\Book\Book;
 use App\Models\Book\BookIssue as Model;
+use App\Models\Globals;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Throwable;
@@ -38,16 +39,17 @@ class BookIssue extends Controller
     public function create(Update $request)
     {
         $model = new Model();
-        $name = Book::find($request->get(Model::FIELD_BOOK_ID))->getAttribute(Book::FIELD_NAME);
 
         $model->fill([
-            Model::FIELD_STUDENT_ID     => $request->get(Model::FIELD_STUDENT_ID),
-            Model::FIELD_BOOK_ID        => $request->get(Model::FIELD_BOOK_ID),
+            Model::FIELD_STUDENT_ID     => explode(Globals::SEARCH_DIVIDER, $request->get(Model::FIELD_STUDENT_ID))[1],
+            Model::FIELD_BOOK_ID        => explode(Globals::SEARCH_DIVIDER, $request->get(Model::FIELD_BOOK_ID))[1],
             Model::FIELD_ISSUE_DATE     => $request->get(Model::FIELD_ISSUE_DATE),
             Model::FIELD_RETURN_DATE    => $request->get(Model::FIELD_RETURN_DATE),
             Model::FIELD_ISSUE_STATUS   => $request->get(Model::FIELD_ISSUE_STATUS),
             Model::FIELD_RETURN_DAY     => $request->get(Model::FIELD_RETURN_DAY)
         ])->save();
+
+        $name = $model->getAttribute(Model::REL_BOOK)->getAttribute(Book::FIELD_NAME);
 
         Session::flash("success", __("messages.success.$this->path.created", ["name" => $name]));
         return redirect(route("dashboard.$this->path.list"));
@@ -56,11 +58,11 @@ class BookIssue extends Controller
     public function update(Update $request, $id)
     {
         $model = Model::find($id);
-        $name = $model->getAttribute(Model::REL_BOOK)->name;
+        $name = $model->getAttribute(Model::REL_BOOK)->getAttribute(Book::FIELD_NAME);
 
         $model->fill([
-            Model::FIELD_STUDENT_ID     => $request->get(Model::FIELD_STUDENT_ID),
-            Model::FIELD_BOOK_ID        => $request->get(Model::FIELD_BOOK_ID),
+            Model::FIELD_STUDENT_ID     => explode(Globals::SEARCH_DIVIDER, $request->get(Model::FIELD_STUDENT_ID))[1],
+            Model::FIELD_BOOK_ID        => explode(Globals::SEARCH_DIVIDER, $request->get(Model::FIELD_BOOK_ID))[1],
             Model::FIELD_ISSUE_DATE     => $request->get(Model::FIELD_ISSUE_DATE),
             Model::FIELD_RETURN_DATE    => $request->get(Model::FIELD_RETURN_DATE),
             Model::FIELD_ISSUE_STATUS   => $request->get(Model::FIELD_ISSUE_STATUS),

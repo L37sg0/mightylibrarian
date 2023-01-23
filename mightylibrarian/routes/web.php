@@ -48,8 +48,8 @@ Route::group(['as' => 'dashboard.', 'prefix' => 'dashboard'], static function ()
     Route::group(['as' => 'book-issue.', 'prefix' => 'book-issues'], static function () {
         Route::match(['get', 'post'], '', [BookIssue::class, 'index'])->name('list');
         Route::post('create', [BookIssue::class, 'create'])->name('create');
-        Route::post('update/{book-issue}', [BookIssue::class, 'update'])->name('update');
-        Route::post('delete/{book-issue}', [BookIssue::class, 'destroy'])->name('delete');
+        Route::post('update/{bookIssue}', [BookIssue::class, 'update'])->name('update');
+        Route::post('delete/{bookIssue}', [BookIssue::class, 'destroy'])->name('delete');
     });
 // Category CRUD
     Route::group(['as' => 'category.', 'prefix' => 'categories'], static function () {

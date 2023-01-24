@@ -10,15 +10,16 @@
 </head>
 <header>
     <div class="fixed-top">
-{{--        @include('components.navbar')--}}
+        {{--        @include('components.navbar')--}}
     </div>
+    @include('frontend.login')
     @include('frontend.components.header')
 </header>
-{{--<body>--}}
-{{--<div class="content">--}}
-{{--    @include('components.content')--}}
-{{--</div>--}}
-{{--</body>--}}
+<body>
+<div class="content">
+    @yield('content')
+</div>
+</body>
 <footer>
     @include('frontend.components.footer')
 </footer>

@@ -1,7 +1,13 @@
 @php
-    use App\Models\Book\BookIssue as Model;use App\Models\Book\IssueStatus;use App\Models\Globals;use Carbon\Carbon;
+    use App\Models\Book\BookIssue as Model;
+    use App\Models\Book\IssueStatus;
+    use App\Models\Globals;
+    use Carbon\Carbon;
 
     /** @var Model|null $model */
+    /** @var string $modelId */
+    /** @var string $labelSingle */
+    /** @var string $path */
     $modelId = ($model) ? $model->getAttribute(Model::FIELD_ID) : '';
     $modelLabelLink = ($model) ? __('Edit') : __('Add New');
     $modelLabelTitle = ($model) ? __("Edit $labelSingle") : __("New $labelSingle");
@@ -56,7 +62,6 @@
                                    class="form-control rounded-3"
                                    id="{{Model::FIELD_ISSUE_DATE}}{{$modelId}}"
                                    name="{{Model::FIELD_ISSUE_DATE}}"
-                                   placeholder="{{__('Book Name')}}"
                                    value="{{$currentIssueDate}}">
                         </div>
 

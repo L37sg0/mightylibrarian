@@ -9,9 +9,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" hidden="" aria-current="page" href="#">Home</a>
-                </li>
+{{--                <li class="nav-item">--}}
+{{--                    <a class="nav-link active" hidden="" aria-current="page" href="#">Home</a>--}}
+{{--                </li>--}}
 {{--                <li class="nav-item">--}}
 {{--                    <a class="nav-link" href="#">Link</a>--}}
 {{--                </li>--}}
@@ -26,52 +26,108 @@
             <div class="d-flex">
 
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-warning me-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <button type="button" class="btn btn-warning me-2" data-bs-toggle="modal" data-bs-target="#loginForm">
                     Login
                 </button>
 
                 <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                <div class="modal fade" id="loginForm" tabindex="-1" aria-labelledby="exampleModalLabel"
                      aria-hidden="true">
                     <div class="modal-dialog">
-                        <div class="modal-content">
+                        <div class="modal-content rounded-4 shadow">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Login</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                             </div>
-                            <div class="modal-body">
-                                ...
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
-                            </div>
+                            <form role="form"
+                                  class="form-hidden"
+                                  action="{{route('login')}}"
+                                  method="post">
+                                @csrf
+                                <div class="modal-body p-5 pt-0">
+                                    <div class="form-floating mb-3">
+
+                                        <x:text-input id="username"
+                                                      name="name"
+                                                      :label="__('Username')"
+                                                      placeholder="Username."
+                                                      value=""
+                                        />
+
+                                        <x:password-input id="password"
+                                                      name="password"
+                                                      :label="__('Password')"
+                                                      placeholder="password"
+                                                      value=""
+                                        />
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Login
+                                    </button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-outline-warning me-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <button type="button" class="btn btn-outline-warning me-2" data-bs-toggle="modal" data-bs-target="#registerForm">
                     Register
                 </button>
 
                 <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                <div class="modal fade" id="registerForm" tabindex="-1" aria-labelledby="exampleModalLabel"
                      aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Register</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                             </div>
-                            <div class="modal-body">
-                                ...
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
-                            </div>
+                            <form role="form"
+                                  class="form-hidden"
+                                  action="{{route('register')}}"
+                                  method="post">
+                                @csrf
+                                <div class="modal-body p-5 pt-0">
+                                    <div class="form-floating mb-3">
+
+                                        <x:text-input id="username"
+                                                      name="name"
+                                                      :label="__('Username')"
+                                                      placeholder="Username."
+                                                      value=""
+                                        />
+
+                                        <x:email-input id="email"
+                                                      name="email"
+                                                      :label="__('Email')"
+                                                      placeholder="Email."
+                                                      value=""
+                                        />
+
+                                        <x:password-input id="password"
+                                                          name="password"
+                                                          :label="__('Password')"
+                                                          placeholder="password"
+                                                          value=""
+                                        />
+
+                                        <x:password-input id="password.confirmation"
+                                                          name="password.confirmation"
+                                                          :label="__('Confirm Password')"
+                                                          placeholder="password"
+                                                          value=""
+                                        />
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Register
+                                    </button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>

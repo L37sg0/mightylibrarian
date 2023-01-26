@@ -9,18 +9,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <header>
-    <div class="fixed-top">
-        {{--        @include('components.navbar')--}}
+    <div class="container-fluid">
+        @include('frontend.login')
     </div>
-    @include('frontend.login')
-    @include('frontend.components.header')
+    <div class="container-fluid">
+        @include('frontend.components.header')
+    </div>
+    <div class="container-fluid">
+        @include('admin.layouts.components.messages')
+    </div>
 </header>
 <body>
-<div class="content">
-    @yield('content')
-</div>
+<main class="container-lg bg-light py-3 my-2">
+    <div class="container-fluid">
+        @yield('content')
+    </div>
+</main>
 </body>
-<footer>
-    @include('frontend.components.footer')
+<footer class="container-lg bg-light py-3 my-2">
+    @include('admin.layouts.components.footer')
 </footer>
 </html>

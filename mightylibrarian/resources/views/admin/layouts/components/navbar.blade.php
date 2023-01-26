@@ -16,7 +16,8 @@
                 @endforeach
             </ul>
         </div>
-        <form role="search"
+        <form class="me-2"
+              role="search"
               action="{{request()->url()}}"
               method="post">
             @csrf
@@ -26,5 +27,11 @@
                    placeholder="{{__('Search')}}"
                    aria-label="Search">
         </form>
+        <div class="d-flex">
+            <a href="{{route('logout')}}" type="button" class="btn btn-outline-primary me-2">
+                Logout
+            </a>
+        </div>
+
     </div>
 </nav>

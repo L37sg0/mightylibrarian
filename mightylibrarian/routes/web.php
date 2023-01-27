@@ -28,57 +28,55 @@ Route::get('/', function () {
 
 Route::match(['get','post'],'login', [LoginController::class, 'login'])->name('login');
 Route::post('register', [LoginController::class, 'register'])->name('register');
-Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::middleware(['auth'])->group(function () {
-    /*
-     * Dashboard
-     */
+    // Dashboard
     Route::get('dashboard', [Dashboard::class, 'index'])->name('dashboard');
+    Route::get('logout', [LoginController::class, 'logout'])->name('logout');
     Route::group(['as' => 'dashboard.', 'prefix' => 'dashboard'], static function () {
-// Author CRUD
+        // Author CRUD
         Route::group(['as' => 'author.', 'prefix' => 'authors'], static function () {
             Route::match(['get', 'post'], '', [Author::class, 'index'])->name('list');
             Route::post('create', [Author::class, 'create'])->name('create');
             Route::post('update/{author}', [Author::class, 'update'])->name('update');
             Route::post('delete/{author}', [Author::class, 'destroy'])->name('delete');
         });
-// Book CRUD
+        // Book CRUD
         Route::group(['as' => 'book.', 'prefix' => 'books'], static function () {
             Route::match(['get', 'post'], '', [Book::class, 'index'])->name('list');
             Route::post('create', [Book::class, 'create'])->name('create');
             Route::post('update/{book}', [Book::class, 'update'])->name('update');
             Route::post('delete/{book}', [Book::class, 'destroy'])->name('delete');
         });
-// BookIssue CRUD
+        // BookIssue CRUD
         Route::group(['as' => 'book-issue.', 'prefix' => 'book-issues'], static function () {
             Route::match(['get', 'post'], '', [BookIssue::class, 'index'])->name('list');
             Route::post('create', [BookIssue::class, 'create'])->name('create');
             Route::post('update/{bookIssue}', [BookIssue::class, 'update'])->name('update');
             Route::post('delete/{bookIssue}', [BookIssue::class, 'destroy'])->name('delete');
         });
-// Category CRUD
+        // Category CRUD
         Route::group(['as' => 'category.', 'prefix' => 'categories'], static function () {
             Route::match(['get', 'post'], '', [Category::class, 'index'])->name('list');
             Route::post('create', [Category::class, 'create'])->name('create');
             Route::post('update/{category}', [Category::class, 'update'])->name('update');
             Route::post('delete/{category}', [Category::class, 'destroy'])->name('delete');
         });
-// Publisher CRUD
+        // Publisher CRUD
         Route::group(['as' => 'publisher.', 'prefix' => 'publishers'], static function () {
             Route::match(['get', 'post'], '', [Publisher::class, 'index'])->name('list');
             Route::post('create', [Publisher::class, 'create'])->name('create');
             Route::post('update/{publisher}', [Publisher::class, 'update'])->name('update');
             Route::post('delete/{publisher}', [Publisher::class, 'destroy'])->name('delete');
         });
-// Student CRUD
+        // Student CRUD
         Route::group(['as' => 'student.', 'prefix' => 'students'], static function () {
             Route::match(['get', 'post'], '', [Student::class, 'index'])->name('list');
             Route::post('create', [Student::class, 'create'])->name('create');
             Route::post('update/{student}', [Student::class, 'update'])->name('update');
             Route::post('delete/{student}', [Student::class, 'destroy'])->name('delete');
         });
-// Setting CRUD
+        // Setting CRUD
         Route::group(['as' => 'setting.', 'prefix' => 'settings'], static function () {
             Route::match(['get', 'post'], '', [Setting::class, 'index'])->name('list');
             Route::post('create', [Setting::class, 'create'])->name('create');

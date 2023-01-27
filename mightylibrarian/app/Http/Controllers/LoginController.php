@@ -7,6 +7,7 @@ use App\Http\Requests\Register;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -15,8 +16,6 @@ class LoginController extends Controller
     public $labelRegister   = 'Register';
 
     public function login(Login $request) {
-
-//        dd($request->all());
         if (Auth::attempt([
             User::FIELD_NAME        => $request->get(User::FIELD_NAME),
             User::FIELD_PASSWORD    => $request->get(User::FIELD_PASSWORD)
@@ -30,13 +29,18 @@ class LoginController extends Controller
     }
 
     public function register(Register $request) {
-        dd($request->all());
-
+        $user = new User();
+        $user->fill([
+            User::FIELD_NAME        => $request->get(User::FIELD_NAME),
+            User::FIELD_EMAIL       => $request->get(User::FIELD_EMAIL),
+            User::FIELD_PASSWORD    => Hash::make($request->get(User::FIELD_PASSWORD))
+        ]);
+        $user->save();
+        
         return redirect(route('dashboard'));
     }
 
     public function logout(Request $request) {
-
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();

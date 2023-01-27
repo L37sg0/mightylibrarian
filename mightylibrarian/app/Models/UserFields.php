@@ -18,6 +18,7 @@ interface UserFields
     public const FILLABLE = [
         self::FIELD_NAME,
         self::FIELD_EMAIL,
+        self::FIELD_PASSWORD,
         self::FIELD_EMAIL_VERIFIED_AT,
     ];
 

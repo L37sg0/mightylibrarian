@@ -8,7 +8,10 @@
 ### Installation:
 
 ```bash
+git clone https://github.com/L37sg0/mightylibrarian.git
+cd mightylibrarian
 docker-compose up -d
+cp mightylibrarian/env.example mightylibrarian/.env
 docker-compose exec app composer install -d myghtylibrarian
 docker-compose exec app php mightylibrarian/artisan migrate --seed
 docker-compose exec app php mightylibrarian/artisan library:index:import

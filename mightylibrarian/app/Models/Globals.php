@@ -14,4 +14,14 @@ interface Globals
     public const ENUM_FIELD_VALUE   = 'value';
 
     public const DATE_FORMAT_YMD    = 'Y-m-d';
+    public const DATEFORMAT_DMY     = 'd/m/Y';
+
+    // FormRequest constants
+    public const FORM_FIELD_REQUIRED    = 'required';
+    public const FORM_FIELD_UNIQUE      = 'unique';
+    public const FORM_FIELD_EXCEPT      = 'except';
+    public const FORM_FIELD_EMAIL       = 'email';
+    public const FORM_FIELD_CONFIRMED   = 'confirmed';
+
+    public const SEARCH_DIVIDER = ', #';
 }

@@ -36,7 +36,7 @@ class LoginController extends Controller
             User::FIELD_PASSWORD    => Hash::make($request->get(User::FIELD_PASSWORD))
         ]);
         $user->save();
-        
+
         return redirect(route('dashboard'));
     }
 

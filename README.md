@@ -2,8 +2,14 @@
 ### Library Mangement system build with Laravel
 
 ### Requirements:
+ - RAM: 1G
+ - Storage: 1G
+ - CPU cores: 1
  - Docker engine v. 20.10.22+
  - Docker Compose v. 1.29.2+
+
+### Demo:
+ - http://mightylibrarian.l37sg0.com/
 
 ### Installation:
 
@@ -11,8 +17,8 @@
 git clone https://github.com/L37sg0/mightylibrarian.git
 cd mightylibrarian
 docker-compose up -d
-cp mightylibrarian/env.example mightylibrarian/.env
-docker-compose exec app composer install -d myghtylibrarian
+cp mightylibrarian/.env.example mightylibrarian/.env
+docker-compose exec app composer install -d mightylibrarian
 docker-compose exec app php mightylibrarian/artisan migrate --seed
 docker-compose exec app php mightylibrarian/artisan library:index:import
 ```

@@ -1,6 +1,10 @@
 ## mightylibrarian
 ### Library Mangement system build with Laravel
 
+### Requirements:
+ - Docker engine v. 20.10.22+
+ - Docker Compose v. 1.29.2+
+
 ### Installation:
 
 ```bash
